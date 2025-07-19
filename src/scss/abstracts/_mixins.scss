@@ -1,0 +1,25 @@
+@use "sass:map";
+
+@use "/node_modules/bootstrap/scss/mixins/breakpoints" as bs-breakpoints;
+
+@use "./variables/breakpoints";
+@use "./variables/colors";
+@use "./variables/buttons";
+
+@mixin media-breakpoint-up($breakpoint) {
+  @include bs-breakpoints.media-breakpoint-up($breakpoint, breakpoints.$grid-breakpoints) {
+    @content;
+  }
+}
+
+@mixin media-breakpoint-down($breakpoint) {
+  @include bs-breakpoints.media-breakpoint-down($breakpoint, breakpoints.$grid-breakpoints) {
+    @content;
+  }
+}
+
+@mixin media-breakpoint-only($breakpoint) {
+  @include bs-breakpoints.media-breakpoint-only($breakpoint, breakpoints.$grid-breakpoints) {
+    @content;
+  }
+}

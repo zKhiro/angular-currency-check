@@ -1,0 +1,15 @@
+@use "sass:map";
+
+@use "../abstracts/functions" as fun;
+@use "../abstracts/mixins";
+@use "../abstracts/variables/colors";
+@use "../abstracts/variables/buttons";
+
+
+a.card {
+  transition: buttons.$link-transition;
+
+  &:hover {
+    box-shadow: 0 0 0 fun.convert-px-to-rem(2) map.get(colors.$theme, "primary");
+  }
+}

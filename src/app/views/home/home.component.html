@@ -1,0 +1,85 @@
+<h1 class="text-primary text-center pt-5">BRL Exchange Rate</h1>
+
+@if (!loadingCurrencyList) {
+  <form class="row justify-content-center gap-5">
+    <app-select-input
+      class="col-md-8"
+      label="Enter the currency code"
+      [items]="currencyList"
+      [control]="currencySelected"
+    ></app-select-input>
+
+    <button
+      class="btn btn-primary btn-block col-md-6 text-white"
+      type="submit"
+      (click)="getExchangeRate(currencySelected.value)"
+    >
+      Exchange result
+    </button>
+  </form>
+}
+
+@if (!loadingExchangeRate && exchangeRate) {
+  <hr class="border-gray-04 my-5">
+
+  <section class="row">
+    <div class="col-6">
+      <h4 class="fw-semibold mb-0">Exchange rate now</h4>
+      <p class="fs-5">{{ exchangeRate.lastUpdatedAt | date: "dd/MM/yyyy - HH'h'mm" }}</p>
+    </div>
+
+    <div class="col-6 d-flex align-items-center justify-content-end">
+      <h2 class="text-primary text-left">{{ currencySelected.value }}/{{ currencyService.DefaultCurrency }}</h2>
+    </div>
+
+    <div class="col-md-6 bg-primary-010 mx-auto">
+      <h1 class="text-primary my-3 text-center">{{ exchangeRate.currentValue | currency }}</h1>
+    </div>
+  </section>
+
+  <section class="mt-5">
+    <div class="d-flex mb-3">
+      <h6 class="fw-semibold flex-fill mb-0">Last 30 Days</h6>
+
+      <button class="btn-accordion" type="button" (click)="isOpen = !isOpen">
+        <img [src]="isOpen ? 'minus.svg' : 'plus.svg'" alt="">
+      </button>
+    </div>
+
+    <div class="accordion" [appAccordion]="isOpen">
+      <div class="accordion-container gap-3">
+        @for (dayExchangedRate of exchangeRate.dailyValues; track $index) {
+          <div class="card rounded-0 p-3">
+            <p class="fs-5 text-primary fw-semibold mb-2">{{ dayExchangedRate.date | date }}</p>
+
+            <div class="row justify-content-between">
+              <div class="col-5 fw-semibold d-flex justify-content-end align-items-baseline mb-1">
+                <span class="fs-6 fw-medium d-block me-auto">OPEN:</span> {{ dayExchangedRate.open | currency }}
+              </div>
+
+              <div class="col-5 fw-semibold d-flex justify-content-end align-items-baseline mb-1">
+                <span class="fs-6 fw-medium d-block me-auto">HIGH:</span> {{ dayExchangedRate.high | currency }}
+              </div>
+
+              <div class="col-5 fw-semibold d-flex justify-content-end align-items-baseline mb-1">
+                <span class="fs-6 fw-medium d-block me-auto">CLOSE:</span> {{ dayExchangedRate.close | currency }}
+              </div>
+
+              <div class="col-5 fw-semibold d-flex justify-content-end align-items-baseline mb-1">
+                <span class="fs-6 fw-medium d-block me-auto">LOW:</span> {{ dayExchangedRate.low | currency }}
+              </div>
+
+              <div class="col-5 text-uppercase fw-semibold d-flex justify-content-end align-items-baseline">
+                <span class="fs-6 fw-medium d-block me-auto">close diff (%):</span>
+                <span [ngClass]="dayExchangedRate.closeDiff >= 0 ? 'text-positive' : 'text-negative'">
+                  {{ dayExchangedRate.closeDiff > 0 ? '+' : '' }}{{ dayExchangedRate.closeDiff | number: '1.2-2' }}%
+                  <img [src]="dayExchangedRate.closeDiff > 0 ? 'chevron-positive.svg' : dayExchangedRate.closeDiff < 0 ? 'chevron-negative.svg' : ''" alt="">
+                </span>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+}

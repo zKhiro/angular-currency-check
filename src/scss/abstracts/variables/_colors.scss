@@ -1,0 +1,46 @@
+@use "sass:color";
+@use "sass:map";
+@use "sass:math";
+
+
+$white:           #FFF;
+$brand:           #07B0FB;
+$palatinate-blue: #4535CC;
+$gray:            #F4F4F4;
+$raisin-black:    #181C25;
+
+// Project Colors
+$github-search: #2544AB;
+$jsdoc:         #F1EB57;
+
+$project-bg-opacity: .2;
+
+$projects-theme: (
+  "github-search":  $github-search,
+  "jsdoc":          $jsdoc,
+);
+
+// Skills
+$angular: #e90364;
+$figma:   #ff3737;
+
+$skill-theme: (
+  "Angular":  $angular,
+  "Figma":    $figma,
+);
+
+$theme: (
+  "primary":      $brand,
+  "secondary":    $palatinate-blue,
+  "dark":       #3F3F3F,
+  "darker":     #262626,
+  "gray-02":    #D9D9D9,
+  "gray-03":    #F4F4F4,
+  "gray-04":    #E5E5E5,
+  "positive":   #69C669,
+  "negative":   #E54E4E,
+);
+
+$theme-opacity: (
+  "primary-010": rgba(map.get($theme, "primary"), .2),
+);

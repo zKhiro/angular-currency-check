@@ -1,0 +1,15 @@
+@use "sass:list";
+
+@use "../abstracts/variables/layouts";
+@use "../abstracts/mixins";
+
+
+.container {
+  padding-left:   layouts.$container-padding-x;
+  padding-right:  layouts.$container-padding-x;
+
+  @include mixins.media-breakpoint-down(md) {
+    padding-left:   list.slash(layouts.$container-padding-x, 2.6666666666666666);
+    padding-right:  list.slash(layouts.$container-padding-x, 2.6666666666666666);
+  }
+}

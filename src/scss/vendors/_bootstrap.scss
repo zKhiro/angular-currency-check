@@ -1,0 +1,127 @@
+@use "sass:map";
+
+@use "../abstracts/variables/borders";
+@use "../abstracts/variables/layouts";
+@use "../abstracts/variables/breakpoints";
+@use "../abstracts/variables/colors";
+@use "../abstracts/variables/typography";
+@use "../abstracts/variables/buttons";
+@use "../abstracts/variables/forms";
+
+@use "../abstracts/functions" as fun;
+
+
+@forward "/node_modules/bootstrap/scss/bootstrap" with (
+  $spacer:  layouts.$spacer,
+  $spacers: layouts.$spacers,
+
+  $grid-breakpoints:      breakpoints.$grid-breakpoints,
+  $container-max-widths:  breakpoints.$container-max-widths,
+  $container-padding-x:   layouts.$container-padding-x,
+
+  $grid-gutter-width:     0,
+
+  $primary:       map.get(colors.$theme, "primary"),
+  $secondary:     map.get(colors.$theme, "secondary"),
+  $success:       map.get(colors.$theme, "primary"),
+  $info:          map.get(colors.$theme, "gray-03"),
+  $warning:       map.get(colors.$theme, "primary"),
+  $danger:        map.get(colors.$theme, "primary"),
+  $light:         map.get(colors.$theme, "primary"),
+  $dark:          map.get(colors.$theme, "dark"),
+
+  $theme-colors:  colors.$theme,
+  $body-bg:       colors.$white,
+  $body-color:    map.get(colors.$theme, "dark"),
+
+  $body-secondary-color:  map.get(colors.$theme, "gray-03"),
+  $body-secondary-bg:     map.get(colors.$theme, "gray-04"),
+
+  $font-family-sans-serif:  typography.$font-family-sans-serif,
+
+  $font-weight-normal:    typography.$font-weight-normal,
+  $headings-font-weight:  typography.$headings-font-weight,
+
+  $font-size-root:  #{typography.$font-size-root}px,
+  $font-size-base:  typography.$font-size-base,
+  $h1-font-size:    typography.$h1-font-size,
+  $h2-font-size:    typography.$h2-font-size,
+  $h3-font-size:    typography.$h3-font-size,
+  $h4-font-size:    typography.$h4-font-size,
+
+  $font-sizes:       typography.$font-sizes,
+
+  $hr-color:    map.get(colors.$theme, "primary"),
+  $hr-opacity:  .5,
+
+  /** Borders **/
+
+  $border-color:                map.get(colors.$theme, "gray-02"),
+
+  $border-radius:               borders.$border-radius,
+  $border-radius-sm:            borders.$border-radius-sm,
+  $border-radius-lg:            borders.$border-radius-lg,
+  $border-radius-xl:            borders.$border-radius-xl,
+  $border-radius-xxl:           borders.$border-radius-xxl,
+  $border-radius-pill:          borders.$border-radius-pill,
+
+  /** Buttons **/
+
+  $btn-padding-y:     buttons.$padding-y,
+  $btn-padding-x:     buttons.$padding-x,
+  $btn-font-size:     buttons.$font-size,
+  $btn-font-weight:   buttons.$font-weight,
+  $btn-border-radius: buttons.$border-radius,
+  $btn-transition:    buttons.$btn-transition,
+
+  $enable-rfs: false,
+  $enable-dark-mode: false,
+
+  /** Forms **/
+
+  $form-text-margin-top:                  .25rem,
+  $form-text-font-size:                   typography.$font-size-base,
+  $form-text-font-style:                  null,
+  $form-text-font-weight:                 null,
+  $form-text-color:                       map.get(colors.$theme, "dark"),
+
+  $input-padding-y:                       forms.$padding-y,
+  $input-padding-x:                       forms.$padding-x,
+  $input-bg:                              forms.$bg-color,
+  $input-border-color:                    forms.$border-color,
+  $input-border-radius:                   forms.$border-radius,
+  $input-border-width:                    forms.$border-width,
+
+  $input-focus-border-color:              forms.$focus-border-color,
+  $input-focus-box-shadow:                none,
+
+  /** Links **/
+
+  $link-decoration:   none,
+
+
+  /** Cards **/
+
+  $card-border-width:                 0,
+  $card-border-radius:                fun.convert-px-to-rem(64),
+  $card-cap-padding-y:                0,
+  $card-cap-padding-x:                0,
+  $card-cap-bg:                       transparent,
+  $card-bg:                           map.get(colors.$theme, "bg-light"),
+
+  /** Toasts **/
+
+  $toast-font-size:     1rem,
+  $toast-box-shadow:    none,
+  $toast-border-radius: 1rem,
+
+
+  /** Badges **/
+
+  $badge-font-size:                   .8em,
+  $badge-font-weight:                 600,
+  $badge-color:                       inherit,
+  $badge-padding-y:                   .35em,
+  $badge-padding-x:                   .65em,
+  $badge-border-radius:               .5rem,
+);

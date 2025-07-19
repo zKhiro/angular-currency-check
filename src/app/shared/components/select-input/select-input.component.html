@@ -1,0 +1,15 @@
+<div class="form-group">
+  <select
+    class="form-control"
+    id="currency"
+    name="currency"
+    [class.selected]="control.value"
+    [formControl]="control"
+  >
+    @for (itemKey of objectKeys(items); track $index) {
+      <option [value]="itemKey">{{ itemKey }} - {{items[itemKey]}}</option>
+    }
+  </select>
+
+  <label for="currency">{{ label }}</label>
+</div>

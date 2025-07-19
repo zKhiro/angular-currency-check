@@ -1,0 +1,16 @@
+@use "sass:map";
+
+@use "../functions" as fun;
+@use "colors";
+
+
+$padding-y: 1rem;
+$padding-x: 1rem;
+
+$bg-color:        map.get(colors.$theme, "gray-03");
+
+$border-color:    map.get(colors.$theme, "gray-02");
+$border-radius:   fun.convert-px-to-rem(4) fun.convert-px-to-rem(4) 0 0;
+$border-width:    0;
+
+$focus-border-color: map.get(colors.$theme, "primary");

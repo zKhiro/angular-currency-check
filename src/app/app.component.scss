@@ -1,0 +1,16 @@
+@use "functions" as fun;
+
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.action-lab-header {
+  border-width: fun.convert-px-to-rem(2) !important;
+}
+
+footer {
+  padding: fun.convert-px-to-rem(7);
+}

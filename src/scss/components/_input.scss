@@ -1,0 +1,47 @@
+@use "../abstracts/functions" as fun;
+@use "../abstracts/variables/forms";
+
+
+.form-group {
+  background-color: forms.$bg-color;
+  border-radius: forms.$border-radius;
+  position: relative;
+
+  label {
+    padding-left: forms.$padding-x;
+    pointer-events: none;
+    position: absolute;
+
+    transition: top .2s, font-size .2s;
+  }
+
+  .form-control {
+    border-bottom-width: fun.convert-px-to-rem(1);
+
+    &:not(.selected) {
+      &+label {
+        top: 1rem;
+      }
+    }
+
+    &.selected {
+      padding-top: fun.convert-px-to-rem(28);
+      padding-bottom: fun.convert-px-to-rem(8);
+
+      &+label {
+        font-size: fun.convert-px-to-rem(12);
+        top: fun.convert-px-to-rem(8);
+      }
+    }
+
+    &:focus,
+    &.selected {
+      border-bottom-width: fun.convert-px-to-rem(2);
+      border-bottom-color: forms.$focus-border-color;
+
+      &+label {
+        color: forms.$focus-border-color;
+      }
+    }
+  }
+}

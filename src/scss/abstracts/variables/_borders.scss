@@ -1,0 +1,12 @@
+@use "../functions" as fun;
+
+
+$hr-margin-bottom:  fun.convert-px-to-rem(12);
+$hr-margin-top:     0;
+
+$border-radius:               fun.convert-px-to-rem(16);
+$border-radius-sm:            fun.convert-px-to-rem(8);
+$border-radius-lg:            fun.convert-px-to-rem(24);
+$border-radius-xl:            fun.convert-px-to-rem(64);
+$border-radius-xxl:           2rem;
+$border-radius-pill:          50rem;

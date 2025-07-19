@@ -1,0 +1,10 @@
+@use "../abstracts/functions" as fun;
+
+footer {
+  line-height: 1;
+}
+
+.px-logo {
+  height: fun.convert-px-to-rem(24);
+  width: fun.convert-px-to-rem(24);
+}

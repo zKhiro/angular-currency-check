@@ -1,0 +1,10 @@
+@use "sass:map";
+
+@use "functions" as fun;
+@use "variables/colors";
+
+
+.form-control {
+  // border-width: 0;
+  // border-bottom-width: fun.convert-px-to-rem(1px);
+}

@@ -1,0 +1,11 @@
+@use "../abstracts/variables/colors";
+
+
+@each $name, $value in colors.$theme-opacity {
+  .bg-#{$name} { background-color: $value !important; }
+  .text-#{$name} { color: $value !important; }
+}
+
+@each $name, $value in colors.$projects-theme {
+  .bg-#{$name} { background-color: rgba($value, colors.$project-bg-opacity); }
+}
