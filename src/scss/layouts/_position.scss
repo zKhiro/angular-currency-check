@@ -1,7 +1,0 @@
-@use "../abstracts/mixins";
-
-.position-lg-fixed {
-  @include mixins.media-breakpoint-up(lg) {
-    position: fixed;
-  }
-}

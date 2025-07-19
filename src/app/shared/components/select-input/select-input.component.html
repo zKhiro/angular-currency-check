@@ -6,8 +6,8 @@
     [class.selected]="control.value"
     [formControl]="control"
   >
-    @for (itemKey of objectKeys(items); track $index) {
-      <option [value]="itemKey">{{ itemKey }} - {{items[itemKey]}}</option>
+    @for (item of items; track $index) {
+      <option [value]="item.code">{{ item.code }} - {{ item.name }}</option>
     }
   </select>
 

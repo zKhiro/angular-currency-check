@@ -1,18 +1,5 @@
-@use "sass:map";
-
-@use "../abstracts/functions" as fun;
-@use "../abstracts/mixins";
-@use "../abstracts/variables/colors";
 @use "../abstracts/variables/buttons";
 
-
-.link {
-  transition: buttons.$link-transition;
-
-  &:hover {
-    color: map.get(colors.$theme, "primary") !important;
-  }
-}
 
 .btn {
   font-weight: 500;

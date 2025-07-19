@@ -1,0 +1,30 @@
+@use "sass:map";
+
+@use "../abstracts/variables/colors";
+@use "../abstracts/functions" as fun;
+@use "../abstracts/mixins";
+
+
+.accordion {
+  background-color: map.get(colors.$theme, "gray-03");
+  border-bottom: fun.convert-px-to-rem(2) solid map.get(colors.$theme, "primary");
+  margin-bottom: fun.convert-px-to-rem(40);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .3s ease-in-out;
+
+  .accordion-container {
+    display: grid;
+    grid: auto / 1fr 1fr;
+    padding: fun.convert-px-to-rem(10);
+
+    @include mixins.media-breakpoint-down(md) {
+      grid: auto / 1fr;
+    }
+  }
+}
+
+.btn-accordion {
+  background: none;
+  border: none;
+}

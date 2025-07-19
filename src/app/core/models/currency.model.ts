@@ -1,5 +1,10 @@
-export interface CurrencyListModel {
+export interface OpenExchangeratesResponseModel {
   [key: string]: string;
+}
+
+export interface CurrencyListModel {
+  code: string;
+  name: string;
 }
 
 export interface CurrentExchangeRateResponseModel {

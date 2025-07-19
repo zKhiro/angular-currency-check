@@ -1,0 +1,23 @@
+.loading {
+  animation: ani-loading 1s ease-out infinite;
+  display: flex;
+  justify-content: center;
+  margin: 2.5rem 0;
+}
+
+@keyframes ani-loading {
+  0% {
+    letter-spacing: 0px;
+    opacity: 1;
+  }
+  75% {
+    letter-spacing: 8px;
+    opacity: 0;
+  }
+  75.001% {
+    letter-spacing: 0px;
+  }
+  100% {
+    opacity: 1;
+  }
+}

@@ -12,7 +12,7 @@ import { CurrencyListModel } from '../../../core/models/currency.model';
 })
 export class SelectInputComponent {
   @Input() label: string;
-  @Input() items: CurrencyListModel;
+  @Input() items: CurrencyListModel[];
   @Input() control: FormControl;
 
   objectKeys = Object.keys;

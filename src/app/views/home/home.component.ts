@@ -17,9 +17,10 @@ export class HomeComponent implements OnInit {
   exchangeRate: ExchangeRateModel;
 
   loadingCurrencyList: boolean = false;
-  currencyList: CurrencyListModel;
+  currencyList: CurrencyListModel[];
 
   currencySelected: FormControl = new FormControl('', [ Validators.required ]);
+  currentCurrencySelected: string;
 
   isOpen: boolean = false;
 
@@ -42,8 +43,8 @@ export class HomeComponent implements OnInit {
       this.currencyService.getExchangeRate(currency).pipe(
         doOnSubscribe(() => this.loadingExchangeRate = true),
       ).subscribe(response => {
-        console.log(response);
         this.exchangeRate = response;
+        this.currentCurrencySelected = this.currencySelected.value;
         this.loadingExchangeRate = false;
       });
     }

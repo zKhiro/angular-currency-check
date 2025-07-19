@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 
 import {
   CurrencyListModel, CurrentExchangeRateResponseModel, DailyExchangeRateResponseModel,
-  ExchangeRateModel,
+  ExchangeRateModel, OpenExchangeratesResponseModel,
 } from '../models/currency.model';
 
 
@@ -26,11 +26,14 @@ export class CurrencyService {
   constructor(private readonly httpClient: HttpClient) {}
 
 
-  getCurrencyList(): Observable<CurrencyListModel> {
-    return this.httpClient.get<CurrencyListModel>(this.Endpoints.CurrencyList).pipe(
+  getCurrencyList(): Observable<CurrencyListModel[]> {
+    return this.httpClient.get<OpenExchangeratesResponseModel>(this.Endpoints.CurrencyList).pipe(
       map(response => {
         delete response[this.DefaultCurrency];
-        return response;
+        return Object.keys(response).map<CurrencyListModel>(responseKey => ({
+          code: responseKey,
+          name: response[responseKey],
+        }));
       }),
     );
   }
@@ -38,8 +41,6 @@ export class CurrencyService {
   getExchangeRate(currency: string): Observable<ExchangeRateModel> {
     return forkJoin([this.getCurrentExchangeRate(currency), this.getDailyExchangeRate(currency)]).pipe(
       map<[CurrentExchangeRateResponseModel, DailyExchangeRateResponseModel], ExchangeRateModel>(response => {
-        console.log(response);
-
         return {
           currentValue: 1 / response[0].exchangeRate,
           lastUpdatedAt: response[0].lastUpdatedAt,
@@ -57,7 +58,7 @@ export class CurrencyService {
   }
 
   private getCurrentExchangeRate(currency: string): Observable<CurrentExchangeRateResponseModel> {
-    // return this.httpClient.get<CurrentExchangeRateResponseModel>(this.Endpoints.CurrentExchangeRate.replace('{}', currency));
+    return this.httpClient.get<CurrentExchangeRateResponseModel>(this.Endpoints.CurrentExchangeRate.replace('{}', currency));
     return of<CurrentExchangeRateResponseModel>({
       success: true,
       lastUpdatedAt: '2025-07-17T03:00:00.000+00:00',
@@ -68,7 +69,7 @@ export class CurrencyService {
   }
 
   private getDailyExchangeRate(currency: string): Observable<DailyExchangeRateResponseModel> {
-    // return this.httpClient.get<DailyExchangeRateResponseModel>(this.Endpoints.DailyExchangeRate.replace('{}', currency));
+    return this.httpClient.get<DailyExchangeRateResponseModel>(this.Endpoints.DailyExchangeRate.replace('{}', currency));
     return of<DailyExchangeRateResponseModel>({
       "success": true,
       "from": "BRL",
